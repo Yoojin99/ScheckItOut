@@ -1,4 +1,4 @@
 # ScheckItOut
 HCI
-
-개발 환경: vue.js
+vue.js 사용
+싸캠 스케쥴 개선
