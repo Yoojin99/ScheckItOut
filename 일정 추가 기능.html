@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0210)file:///C:/Users/kimyujin/Desktop/2020%203-2%ED%95%99%EA%B8%B0/%EC%9D%B8%EA%B0%84%EC%BB%B4%ED%93%A8%ED%84%B0%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9/%EC%9D%BC%EC%A0%95%20%EC%B6%94%EA%B0%80%20%EA%B8%B0%EB%8A%A5.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>일정 추가 기능</title>
+<style type="text/css">
+	body{
+		text-align: center;
+		display: block;
+		margin: 0 auto;
+		font-size: 10px;
+		color: #999;
+	}
+	h1{
+    	font-family: 'Oswald', sans-serif;
+    	font-size: 20px;
+    	color: #216182;
+    }
+    label {
+    	display: block;
+    	margin-top: 20px;
+    	letter-spacing: 3px;
+    }
+    form {
+    	margin: 0 auto;
+    	width: 459px;
+    }
+    input, textarea {
+    	width: 190px;
+    	height: 20px;
+    	background-color: #efefef;
+    	border-radius: 6px;
+    	border: 1px solid #dedede; 
+    	padding: 10px;
+    	margin-top: 3px;
+    	font-size: 0.9em;
+    	color: #3a3a3a; 
+    }
+    	input:focus, textarea:focus{
+    		border: 1px solid #97d6eb;
+    	}
+	
+    textarea{
+    	height: 30px;
+    	background-color: #efefef;
+    }
+    #submit{
+    	width: 127px;
+    	height: 48px;
+    	text-align: center;
+    	border: none;
+    	margin-top: 20px;
+    	cursor: pointer;
+    }
+    #submit:hover{
+    	color: #fff;
+    	background-color: #216282;
+    	opacity: 0.9;
+    }
+    #cancel {
+    	width: 127px; height: 48px;
+    	text-align: center;
+    	border: none;
+    	margin-top: 20px;
+    	cursor: pointer;
+    }
+    #cancel:hover{
+    	color: #fff;
+    	background-color: #216282;
+    	opacity: 0.9;
+    }
+
+	.modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.1);
+        transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    }
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 1rem 1.5rem;
+        width: 500px;
+        height: 350px;
+        border-radius: 0.5rem;
+    }
+    .close-button {
+        float: right;
+        width: 1.5rem;
+        line-height: 1.1rem;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        background-color: lightgray;
+    }
+    .close-button:hover {
+        background-color: darkgray;
+    }
+    .show-modal {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1.0);
+        transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    }
+   
+</style></head>
+
+
+<body>
+	
+	<!-- 버튼 -->
+	<button class="trigger">+</button>
+    
+    <!-- 팝업 될 레이어 --> 
+    <div class="modal show-modal">
+        <div class="modal-content">
+            
+            <h1 class="title">일정 생성</h1>
+            <form action="http://visualssing.dothome.co.kr/temp/popup.html#post.php" method="POST">
+              
+			  <p>날짜: <input type="date" name="일자선택" style="margin: 3px 3px 0px; width: 340px; height: 24px;"><p>시간: 
+    <input type="time" name="시간선택" style="margin: 3px 3px 0px; width: 340px; height: 24px;">
+    </p>
+
+</p><label></label>  
+<p>내용:   <textarea name="message" placeholder="일정 내용을 입력하세요" required="required" style="margin: 5px 3px 0px; width: 404px; height: 17px;">    </textarea>
+</p>카테고리:  <select name="choose" required="required" style="margin: 5px 3px 0px; width: 382px; height: 21px;" default="Type">
+<option>퀴즈</option>
+<option>과제</option>
+<option>강의</option>
+</select>
+
+			  <p>
+<input type="button" id="cancel" value="취소" style="margin: 6px 0px 0px; width: 100px; height: 40px;">
+<input type="submit" id="submit" value="확인" style="margin: 6px 0px 0px; width: 100px; height: 40px;"></p>
+
+			  
+			</form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+		var modal = document.querySelector(".modal");
+	    var trigger = document.querySelector(".trigger");
+	    var cancelButton = document.querySelector("#cancel");
+
+	    //console.log(modal);
+
+	    function toggleModal() {
+	        modal.classList.toggle("show-modal");
+	    }
+        
+    
+	    function windowOnClick(event) {
+	        if (event.target === modal) {
+	            toggleModal();
+	        }
+	    }
+
+	    trigger.addEventListener("click", toggleModal);
+	    cancel.addEventListener("click", toggleModal);
+	    window.addEventListener("click", windowOnClick);
+	</script>
+
+
+</body></html>
