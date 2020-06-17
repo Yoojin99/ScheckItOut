@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="mainpagecss.css">>
+	<title>Sheck it!</title>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+
+function gotomain(){
+ location.replace("mainpage.html");
+}
+
+function loadNoticePage(){
+	$("#content").load("noticepage.html");
+}
+
+function loadQnAPage(){
+	$("#content").load("QnApage.html");
+}
+
+function loadViewPage(){
+	$("#content").load("viewpage.html");
+}
+
+function mainalert(){
+	$("#content").replace("mainpage.html");
+	alert("왜");
+}
+</script>
+
+</head>
+<body>
+	<header>
+		<div class="upmenu">
+			<a href="#"><img src="./img/menuicon.PNG" onclick="gotomain()"></a>
+			<nav>
+				<ul class="menu">
+					<li><a href="#">방해금지</a></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<div class="container">
+		<div class = "nav">
+			<div class="nav-container">
+				<img src="./img/studentimage.jpg">
+				<ul class="nav-list">
+					<li class = "nav_item"><a href="#" class="nav-link">log out</a></li>
+				</ul>
+			</div>
+			<div class="nav-container">
+				<ul class="nav-list">
+					<li class = "nav_item"><a href="#" class="nav-link">알리미</a></li>
+					<li class = "nav_item"><a href="#" class="nav-link">수강강좌</a></li>
+				</ul>
+			</div>
+			<div class="nav-container">
+				<ul class="nav-list">
+					<li class = "nav_item"><a href="#" onclick="loadNoticePage()" class="nav-link">공지사항</a></li>
+					<li class = "nav_item"><a href="#" onclick="loadQnAPage()" class="nav-link">Q&A</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="content" id="content">
+		      
+		</div>
+		
+	</div>
+
+	<div id="footer">
+	</div>
+
+</body>
+</html>

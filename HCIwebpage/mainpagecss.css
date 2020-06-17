@@ -1,0 +1,97 @@
+body{
+	font:14px/1.8 Arial;
+}
+
+.frame{
+	width: 800px;
+	margin: 0 auto;
+	border: 1px solid #aaa;
+}
+
+/*header*/
+header{height: 75px; background-color: #FFD966; border: 1px solid #FFD966;
+position: fixed; width: 100%; z-index: 9999; top: 0; left:0;}
+h1{color: white; line-height: -10px; float: left;}
+.menu{float:right;}
+.menu li{float: left; list-style: none;}
+.menu a{line-height: 45px; color: white; padding: 0 50px; display: block;}
+
+/*common*/
+.upmenu{width: 95%; margin: 0 auto;}
+.upmenu img{width: auto; height: auto;
+max-width: 175px; max-height: 200px; position: absolute;
+top:0px; left:15px;}
+.clearfix{content: ''; display: block; clear: both;}
+
+/*container*/
+.container{
+	overflow: hidden;
+	display: table;
+	position: absolute;
+	left: 0px;
+	top : 75px;
+	width: 100%
+}
+
+.nav, .content{
+	display: table-cell;
+
+}
+
+/*nav*/
+.nav{
+	position: fixed;
+	float: left;
+	width: 200px;
+	background: #333;
+	color: #fff;
+}
+
+.nav-container{
+	border-top-width : 3px;
+	border-bottom-width : 3px;
+	border-top-style : outset;
+	border-top-color : white;
+}
+.nav-container img{
+	width: 160px;
+	height: 160px;
+  	border-radius: 50%;
+  	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin-bottom: 20px;
+  	margin-top: 50px;
+}
+
+.nav-list{
+	list-style: none;
+	margin: 0;
+	padding: 3px 0;
+}
+.nav-item{
+	margin: 4px 0;
+}
+.nav-link{
+	display: block;
+	text-decoration: none;
+	padding: 10px 10px;
+	color: #fff;
+	text-align: center;
+}
+.nav-link:hover{
+	background: #5457de;
+}
+
+.content{
+	padding-left: 200px;
+	float: left;
+	width: 800px;
+}
+/*content
+.content{
+	overflow: hidden;
+	padding: 0 0 0 6px
+	float: left;
+	width: 100%;
+}*/

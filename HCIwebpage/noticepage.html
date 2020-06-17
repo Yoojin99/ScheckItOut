@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="./css/normalize.css" />
+	<link rel="stylesheet" href="./css/board.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+	<script>
+		window.onload = tableCreate();
+
+		function tableCreate(){
+			var people=[];
+
+			$.getJSON('noticepage.json', function(data) {
+	      	$.each(data.person, function(i, f) {
+	          var tblRow = "<tr onclick=\"location.replace(\"./viewpage.html\")>" + "<td>" + f.number + "</td>"+
+	           "<td>" + f.t + "</td>" + "<td>" + f.writer+ "</td>" + "<td>" + f.date + "</td>" +"<td>"+ f.hit + "</td>" + "</tr>";
+	           		$('#board tr:last').after($(tblRow));
+		           //$(tblRow).appendTo("#board tbody");
+			     });
+	      		var item = document.getElementsByTagName("tr");
+	      		for(var j=0; j<item.length; j++){
+	      			/*
+	      			var cell = item[j].getElementsByTagName("td");
+	      			for(var k=0; k<cell.length; k++){
+	      				console.log(cell[k]);
+	      			}
+	      			var createClickHandler = function(row) {
+		      return function() {
+		      	mainalert();
+		      };
+		    };
+		item[j].onclick = createClickHandler(item[j]);*/
+	      			}
+	      		
+			});
+
+		}
+
+/*
+		$('tr').click(function(){var table = document.getElementsByTagName("thread");
+		  	console.log(table);});
+		
+		//처음에 데이터 json에서 로딩
+	    $(function() {
+	   var people = [];
+
+	   $.getJSON('noticepage.json', function(data) {
+	       $.each(data.person, function(i, f) {
+	          var tblRow = "<tr>" + "<td>" + f.number + "</td>"+
+	           "<td>" + f.t + "</td>" + "<td>" + f.writer+ "</td>" + "<td>" + f.date + "</td>" +"<td>"+ f.hit + "</td>" + "</tr>"
+	           $(tblRow).appendTo("#board tbody");
+		     });
+
+		   });
+	   	addRowHandlers();
+
+		});
+
+	    $("#board tr").click(function() {
+   		alert($(this).children("td").html());
+		});
+		//window.onload = addRowHandlers();
+
+	    function addRowHandlers() {
+		  var table = document.getElementById("Tbody");
+		  console.log(table);
+		  }
+		  
+		  for (i = 0; i < rows.length; i++) {
+		    var currentRow = table.rows[i];
+		    console.log("no");
+		    var createClickHandler = function(row) {
+		      return function() {
+		        var cell = row.getElementsByTagName("td")[0];
+		        alert("id:");
+		      };
+		    };
+		    currentRow.onclick = createClickHandler(currentRow);*/
+		  
+		
+
+	</script>
+</head>
+<body>
+
+	<article class="boardArticle">
+			<h3>자유게시판</h3>
+		   	<table id= "board">
+			   	<caption class="readHide">자유게시판</caption>
+			  	
+			  		<tr>
+			            <th scope="col" class="no">번호</th>
+			            <th scope="col" class="title">제목</th>
+			            <th scope="col" class="author">작성자</th>
+			            <th scope="col" class="date">작성일</th>
+			            <th scope="col" class="hit">조회</th>
+			        </tr>
+	   		</table>
+	</article>
+	<button onclick="location.herf='viewpage.html'" class="nav-link"></button>
+
+</body>
+</html>
