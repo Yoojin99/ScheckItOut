@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>달력</title>
+    <link rel="stylesheet" type="text/css" href="cal_css.css" />
+    <script type="text/javascript" src="cal_js.js"></script>
+</head>
+<body>
+    <p></p>
+<table id="calendar">   
+    <tr><!-- label은 마우스로 클릭을 편하게 해줌 -->
+        <th colspan="2"></td>
+        <th onclick="prevCalendar()"><label> < </label></th>
+        <th id="tbCalendarYM"> yyyy년 m월 </th>
+        <th onclick="nextCalendar()"><label> > </label></th>
+        <th></th>
+        <th id="addSch" onclick="addNew()"><label> + </label></th>
+    </tr>
+    <tr>
+        <td style="text-align:center; height: 20px; font-size: 20px; border-right: solid #ffffff"><font color ="#F79DC2">일</td>
+        <td style="text-align:center; height: 20px; font-size: 20px; border-right: solid #ffffff">월</td>
+        <td style="text-align:center; height: 20px; font-size: 20px; border-right: solid #ffffff">화</td>
+        <td style="text-align:center; height: 20px; font-size: 20px; border-right: solid #ffffff">수</td>
+        <td style="text-align:center; height: 20px; font-size: 20px; border-right: solid #ffffff">목</td>
+        <td style="text-align:center; height: 20px; font-size: 20px; border-right: solid #ffffff">금</td>
+        <td style="text-align:center; height: 20px; font-size: 20px"><font color ="skyblue">토</td>
+    </tr> 
+</table>
+
+<script language="javascript" type="text/javascript">
+    buildCalendar();//
+</script>
+<!-- Trigger/Open The Modal -->
+<button id="myBtn" onclick="Click()">Open Modal</button>
+
+<!-- Add Schdule pop up window -->
+<div id="pop" class="modal">
+    <div class="modal-content">
+        <h>일정생성</h> <br>
+        <label for="date">날짜: </label>
+        <select name="year" id="year">
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+        </select>
+        <select name="month" id="month">
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <select name="date" id="date">
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select><br>
+        <label for="time">시간: </label>
+        <input type="text" id="time" name="time"><br>
+        <label for="name">내용: </label>
+        <input type="text" id="name" name="name"><br>
+        <label for="category">카테고리</label>
+        <select name="category" id="category">
+            <option value="quiz">퀴즈</option>
+            <option value="assignment">과제</option>
+            <option value="lecture">강의</option>
+            <option value="etc">기타</option>
+        </select><br>
+        <input type="submit" value="Submit" onclick="sendNew()">
+    </div>
+</div>
+
+</body>
+</html>
+
