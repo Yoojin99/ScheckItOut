@@ -3,18 +3,18 @@
 <head>
     <title>달력</title>
     <link rel="stylesheet" type="text/css" href="cal_css.css" />
-    <script type="text/javascript" src="cal_js.js"></script>
+    <script type="text/javascript" src="wix_cal.js"></script>
 </head>
 <body>
     <p></p>
 <table id="calendar">   
     <tbody><tr><!-- label은 마우스로 클릭을 편하게 해줌 -->
         <th colspan="2">
-        </th><th onclick="prevCalendar()"><label> &lt; </label></th>
+        </th><th><label> &lt; </label></th>
         <th id="tbCalendarYM">2020년 6월</th>
-        <th onclick="nextCalendar()"><label> &gt; </label></th>
+        <th><label> &gt; </label></th>
         <th></th>
-        <th id="addSch" onclick="newSchedule()"><label> + </label></th>
+        <th id="addSch" onclick="changeDisplay('pop','block')"><label> + </label></th>
     </tr>
     <tr>
         <td style="text-align:center; height: 20px; font-size: 20px; border-right: solid #ffffff"><font color="#F79DC2">일</font></td>
@@ -51,9 +51,6 @@
     </tr>
 </tbody>
 </table>
-
-<!-- Trigger/Open The Modal -->
-<button id="myBtn" onclick="Click()">Open Modal</button>
 
 <!-- Add Schdule pop up window -->
 <div id="pop" class="modal">
@@ -102,7 +99,8 @@
             <option value="31">31</option>
         </select><label>일</label><br>
         <label for="time">시간: </label>
-        <input type="text" id="time" name="time"><br>
+        <input type="text" id="hour" name="hour" size=3px><label> 시</label>
+        <input type="text" id="minute" name="minute" size=3px><label> 분</label><br>
         <label for="name">내용: </label>
         <input type="text" id="name" name="name"><br>
         <label for="category">카테고리</label>
@@ -112,9 +110,12 @@
             <option value="lecture">강의</option>
             <option value="etc">기타</option>
         </select><br>
-        <input type="submit" value="Submit" onclick="addSchedule()">
+        <input type="submit" value="취소" onclick="changeDisplay('pop','none')">
+        <input type="submit" value="확인" onclick="addSchedule()">
     </div>
 </div>
+
+<button onclick="changeDisplay('personalSchedule','block')">Open</button>
 
 </body>
 </html>

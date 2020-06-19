@@ -88,26 +88,61 @@ function buildCalendar(){//현재 달 달력 만들기
 }
 
 // When the user clicks the button, open the modal 
-function addNew() {
+function newSchedule() {
   var modal = document.getElementById("pop");
   modal.style.display = "block";
 }
 
-function sendNew() {
-    window.parent.postMessage(document.getElementById("pop").value, "*");
-}
+// 달력에 일정 추가하기
+function addSchedule(){
+    var month = document.getElementsByName("month")[0].value;
+    var date = document.getElementsByName("date")[0].value;
+    var time = document.getElementsByName("time")[0].value;
+    var category = document.getElementsByName("category")[0].value;
+    var name = document.getElementsByName("name")[0].value;
 
-function exex(){
     // 달력 가져오기
     var tbCalendar = document.getElementById("calendar"); 
     
     // DIV 만들어서 날짜 아래 추가하기 (label button 등 다른거 가능)
     var post = document.createElement("DIV");
-    post.innerHTML = "CLICK ME";
+    var cat = "";
+    if(category =="quiz") cat = "[퀴]";
+    else if(category=="assignment") cat = "[과]";
+    else if(category=="lecture") cat = "[강]";
+    post.innerHTML = cat+" "+name;
     post.id="personalSchedule"
 
     // 달력의 어디에 추가 되는 것인지 확인
-    const date = new Date('June 19, 2020');
-    const week = date.getDay();
-    tbCalendar.rows[Math.ceil(date.getDate()/7)+1].cells[week].appendChild(post);
+    const fullDate = new Date(month+' '+date+', 2020');
+    const week = fullDate.getDay();
+    console.log(fullDate.getDate() );
+
+    tbCalendar.rows[Math.floor(fullDate.getDate()/7)+2].cells[week].appendChild(post);
+
+    var modal = document.getElementById("pop");
+    modal.style.display = "none";
+}
+
+function dateOption(){
+    var month = document.getElementsByName("month")[0].value;
+    var tbCalendar = document.getElementById("pop");
+
+    var date = document.getElementById("date");
+
+    // 30일 옵션에 넣기
+    if (month == "April" || month == "June"){ // 30일
+        if(date.length != 30) {date.remove(30);}
+    }
+
+    // 31일 옵션에 넣기
+    else {
+        if(date.length != 31) {
+            var z = document.createElement("option");        
+            z.setAttribute("value", "31");
+            var t = document.createTextNode("31");
+            z.appendChild(t);
+            date.appendChild(z);
+        }
+    }
 }
