@@ -25,27 +25,52 @@ function addSchedule(){
     if(category =="quiz") cat = "[퀴]";
     else if(category=="assignment") cat = "[과]";
     else if(category=="lecture") cat = "[강]";
-    post.innerHTML = cat+" "+name;
+    cat = cat+" "+name;
+    post.innerHTML = cat;
     post.className="personalSchedule";
-    post.setAttribute("onclick","changeDisplay('personalSchedule','block')");
+    post.setAttribute("onclick","changeDisplay("+cat+date+",'table')");
 
-    // 달력의 어디에 추가 되는 것인지 확인
+    // 달력에 일정 추가
     const fullDate = new Date(month+' '+date+', 2020');
     const week = fullDate.getDay();
-    tbCalendar.rows[Math.floor(fullDate.getDate()/7)+2].cells[week].appendChild(post);
+    const row = Math.floor(fullDate.getDate()/7)+2;
+    tbCalendar.rows[row].cells[week].appendChild(post);
 
-    detailedSchedule();
+    // 상세정보 생성
+    detailedSchedule(cat, month, date,hour, minute);
     // 스케쥴 추가 창 없애기
     changeDisplay("pop","none");
 }
 
-function detailedSchedule(){
-    var miniPop = document.createElement("DIV");
-    miniPop.className="detailed";
-    miniPop.id="personalSchedule";
-    miniPop.innerHTML = "WOW";
-    miniPop.style="right:280px;top:50px;";
-    document.body.appendChild(miniPop);
+function detailedSchedule(name, month, date,hour, minute){
+    var miniView = document.getElementById("right_side");
+
+    var miniPop = document.createElement("tbody");
+    miniPop.setAttribute("class","detailed");
+    miniPop.setAttribute("id",name+date);
+
+    var nn=document.createElement("th");nn.innerHTML = name;
+    var mm=document.createElement("td");mm.innerHTML = "날짜: "+month+"월 "+date+"일";
+    var tt=document.createElement("td");tt.innerHTML = "시간: "+hour+"시 "+minute+"분";
+    
+    var tr=document.createElement("tr");
+    tr.appendChild(nn);
+    miniPop.appendChild(tr);
+
+    tr=document.createElement("tr");
+    tr.appendChild(mm);
+    miniPop.appendChild(tr);
+
+    tr=document.createElement("tr");
+    tr.appendChild(tt);
+    miniPop.appendChild(tr);    
+    miniView.appendChild(miniPop);
+
+    /*
+    var left = 18+week*58;
+    var top = 160+row*60;
+    miniPop.style="left:"+left+"px;top:"+top+"px;";
+    */
 }
 
 
